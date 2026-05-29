@@ -1,4 +1,4 @@
-<!doctype html>
+<!Doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -114,6 +114,18 @@
         color: green;
         font-weight: bold;
         margin-top: 15px;
+      }
+      #eventImage {
+        border: 2px solid black;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      #phoneMsg,
+      #feeDisplay,
+      #confirmMsg {
+        font-weight: bold;
+        text-align: center;
       }
     </style>
   </head>
@@ -286,6 +298,56 @@
         </form>
       </div>
     </section>
+    <section id="feedback">
+      <div class="form-container">
+        <h2>Event Feedback Form</h2>
+
+        <label>Phone Number</label>
+        <input
+          type="text"
+          id="phone"
+          placeholder="Enter 10-digit phone number"
+          onblur="validatePhone()"
+        />
+
+        <p id="phoneMsg"></p>
+        <label>Select Event</label>
+        <select id="eventSelect" onchange="showFeeAndImage()">
+          <option value="">Select Event</option>
+          <option value="200">Music Festival</option>
+          <option value="150">Food Fair</option>
+          <option value="100">Sports Day</option>
+          <option value="180">Health Camp</option>
+          <option value="250">Cultural Night</option>
+        </select>
+
+        <p id="feeDisplay"></p>
+
+        <label>Feedback</label>
+        <textarea
+          id="feedbackText"
+          rows="5"
+          placeholder="Enter your feedback"
+          onkeyup="countChars()"
+        ></textarea>
+
+        <p>Characters Typed: <span id="charCount">0</span></p>
+
+        <img
+          src="music.avif"
+          id="eventImage"
+          width="200"
+          ondblclick="enlargeImage()"
+          alt="Event Image"
+        />
+
+        <br /><br />
+
+        <button onclick="submitFeedback()">Submit Feedback</button>
+
+        <p id="confirmMsg"></p>
+      </div>
+    </section>
     <!-- Footer -->
     <footer>
       <p>&copy; 2026 Local Community Event Portal</p>
@@ -295,6 +357,90 @@
     function showMessage() {
       document.getElementById("confirmation").innerHTML =
         "Registration Successful! Thank you for registering.";
+    }
+
+    function validatePhone() {
+      let phone = document.getElementById("phone").value;
+      let msg = document.getElementById("phoneMsg");
+
+      if (/^[0-9]{10}$/.test(phone)) {
+        msg.innerHTML = "✓ Valid Phone Number";
+        msg.style.color = "green";
+      } else {
+        msg.innerHTML = "✗ Enter a valid 10-digit phone number";
+        msg.style.color = "red";
+      }
+    }
+
+    function showFee() {
+      let fee = document.getElementById("eventSelect").value;
+
+      if (fee !== "") {
+        document.getElementById("feeDisplay").innerHTML = "Event Fee: ₹" + fee;
+      }
+    }
+
+    function showFeeAndImage() {
+      let select = document.getElementById("eventSelect");
+      let fee = select.value;
+      let eventName = select.options[select.selectedIndex].text;
+
+      document.getElementById("feeDisplay").innerHTML = "Event Fee: ₹" + fee;
+
+      let img = document.getElementById("eventImage");
+
+      switch (eventName) {
+        case "Music Festival":
+          img.src = "music.avif";
+          break;
+
+        case "Food Fair":
+          img.src = "food.avif";
+          break;
+
+        case "Sports Day":
+          img.src = "sports.avif";
+          break;
+
+        case "Health Camp":
+          img.src = "medical.avif";
+          break;
+
+        case "Cultural Night":
+          img.src = "night.avif";
+          break;
+
+        default:
+          img.src = "music.avif";
+      }
+    }
+
+    function enlargeImage() {
+      let img = document.getElementById("eventImage");
+
+      if (img.style.width === "450px") img.style.width = "250px";
+      else img.style.width = "450px";
+    }
+
+    function submitFeedback() {
+      document.getElementById("confirmMsg").innerHTML =
+        "✓ Feedback Submitted Successfully!";
+      document.getElementById("confirmMsg").style.color = "green";
+    }
+
+    function enlargeImage() {
+      let img = document.getElementById("eventImage");
+
+      if (img.style.width === "400px") {
+        img.style.width = "200px";
+      } else {
+        img.style.width = "400px";
+      }
+    }
+
+    function countChars() {
+      let count = document.getElementById("feedbackText").value.length;
+      document.getElementById("charCount").innerHTML = count;
     }
   </script>
 </html>
