@@ -1,4 +1,4 @@
-<!Doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -126,6 +126,16 @@
       #confirmMsg {
         font-weight: bold;
         text-align: center;
+      }
+      #videoInvite {
+        text-align: center;
+        margin: 30px;
+      }
+
+      #videoMsg {
+        color: green;
+        font-weight: bold;
+        margin-top: 10px;
       }
     </style>
   </head>
@@ -271,7 +281,13 @@
           "
         >
           <label>Name</label>
-          <input type="text" placeholder="Enter your name" required autofocus />
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+            required
+            autofocus
+          />
 
           <label>Email</label>
           <input type="email" placeholder="Enter your email" required />
@@ -347,6 +363,16 @@
 
         <p id="confirmMsg"></p>
       </div>
+    </section>
+    <section id="videoInvite">
+      <h2>Event Promo Video</h2>
+
+      <video id="promoVideo" width="500" controls oncanplay="videoReady()">
+        <source src="eventpromo.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <p id="videoMsg"></p>
     </section>
     <!-- Footer -->
     <footer>
@@ -442,5 +468,19 @@
       let count = document.getElementById("feedbackText").value.length;
       document.getElementById("charCount").innerHTML = count;
     }
+
+    function videoReady() {
+      document.getElementById("videoMsg").innerHTML = "✅ Video ready to play";
+    }
+
+    window.onbeforeunload = function () {
+      let name = document.getElementById("name").value;
+      let phone = document.getElementById("phone").value;
+      let feedback = document.getElementById("feedbackText").value;
+
+      if (name || phone || feedback) {
+        return "You have unfinished form data.";
+      }
+    };
   </script>
 </html>
