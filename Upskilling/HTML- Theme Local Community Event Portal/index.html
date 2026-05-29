@@ -392,12 +392,16 @@
   </body>
   <script>
     function showMessage() {
+      console.log("Registration Form Submitted");
+
       document.getElementById("confirmation").innerHTML =
         "Registration Successful! Thank you for registering.";
     }
-
     function validatePhone() {
       let phone = document.getElementById("phone").value;
+
+      console.log("Phone Entered:", phone);
+
       let msg = document.getElementById("phoneMsg");
 
       if (/^[0-9]{10}$/.test(phone)) {
@@ -518,6 +522,7 @@
       document.getElementById("preferredEvent").value = "";
     }
     function findLocation() {
+      console.log("Find Nearby Events button clicked");
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           showPosition,
