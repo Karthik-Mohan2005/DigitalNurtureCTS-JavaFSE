@@ -22,6 +22,28 @@
             font-weight: bold;
             padding: 2px 5px;
         }
+        .gallery-img {
+            width: 200px;
+            height: 140px;
+            border: 3px solid #333;
+            border-radius: 8px;
+            padding: 3px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.1);
+        }
+
+        .gallery-table {
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        .gallery-table td {
+            padding: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -41,7 +63,70 @@
             </span>
         </p>
     </div>
+    <!-- Image Gallery Section -->
+    <section id="gallery">
+        <h2>Community Event Gallery</h2>
 
+        <table class="gallery-table">
+            <tr>
+                <td>
+                    <img src="music.avif"
+                        alt="Music Festival"
+                        title="Annual Music Festival"
+                        class="gallery-img">
+                    <p><b>Music Festival 2025</b><br>
+                    Local artists performed for the community.</p>
+                </td>
+
+                <td>
+                    <img src="food.avif"
+                        alt="Food Fair"
+                        title="Community Food Fair"
+                        class="gallery-img">
+                    <p><b>Food Fair</b><br>
+                    Residents enjoyed a variety of local cuisines.</p>
+                </td>
+
+                <td>
+                    <img src="tree.avif"
+                        alt="Tree Plantation Drive"
+                        title="Environmental Awareness Event"
+                        class="gallery-img">
+                    <p><b>Tree Plantation Drive</b><br>
+                    Volunteers planted trees across the neighborhood.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <img src="sports.avif"
+                        alt="Sports Day"
+                        title="Annual Sports Competition"
+                        class="gallery-img">
+                    <p><b>Sports Day</b><br>
+                    Community members participated in various games.</p>
+                </td>
+
+                <td>
+                    <img src="medical.avif"
+                        alt="Health Camp"
+                        title="Free Health Checkup Camp"
+                        class="gallery-img">
+                    <p><b>Health Camp</b><br>
+                    Free medical checkups and awareness programs.</p>
+                </td>
+
+                <td>
+                    <img src="night.avif"
+                        alt="Cultural Night"
+                        title="Community Cultural Celebration"
+                        class="gallery-img">
+                    <p><b>Cultural Night</b><br>
+                    Dance, music, and cultural performances.</p>
+                </td>
+            </tr>
+        </table>
+    </section>
     <!-- Navigation -->
     <nav>
         <a href="#home">Home</a> |
