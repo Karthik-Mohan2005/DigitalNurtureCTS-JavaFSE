@@ -193,7 +193,7 @@ h2 {
 /* Grouping Selector - h3 and p */
 h3,
 p {
-  color: #333;
+  color: #1b1717;
   font-family: Arial, sans-serif;
 }
 /* Page Background with Fallback Color */
@@ -226,7 +226,7 @@ h2 {
 
 /* Navigation Bar Styling */
 nav {
-  background-color: #003366;
+  background-color: #63a6e9;
   padding: 10px;
 }
 
@@ -329,4 +329,29 @@ ul {
 li {
   padding: 5px;
   margin: 5px;
+}
+
+
+
+
+/* Gallery Table Styling */
+.gallery-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+/* Gallery Table Cells */
+.gallery-table td {
+  padding: 20px;
+  border: 1px solid #cccccc;
+}
+
+/* Zebra Striping */
+.gallery-table tr:nth-child(odd) {
+  background-color: #ce9b9b;
+}
+
+.gallery-table tr:nth-child(even) {
+  background-color: #aed5f9;
 }
