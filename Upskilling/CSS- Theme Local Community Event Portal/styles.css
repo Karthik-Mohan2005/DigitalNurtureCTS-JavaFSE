@@ -331,9 +331,6 @@ li {
   margin: 5px;
 }
 
-
-
-
 /* Gallery Table Styling */
 .gallery-table {
   width: 100%;
@@ -343,7 +340,7 @@ li {
 
 /* Gallery Table Cells */
 .gallery-table td {
-  padding: 20px;
+  padding: 21px;
   border: 1px solid #cccccc;
 }
 
@@ -429,7 +426,7 @@ nav {
 
   /* Reduce Font Sizes */
   h1 {
-    font-size: 6vw;
+    font-size: 5vw;
   }
 
   h2 {
