@@ -647,7 +647,6 @@ form.addEventListener("submit", function (event) {
         .then((response) => {
           console.log("Server Response Received");
 
-          console.log(data);
           if (!response.ok) {
             throw new Error("Server Error");
           }
@@ -671,4 +670,16 @@ form.addEventListener("submit", function (event) {
         });
     }, 2000);
   }
+});
+
+$(document).ready(function () {
+  $("#registerBtn").click(function () {
+    alert("Register Button Clicked");
+
+    $("#jqueryCard").fadeOut(1000);
+
+    setTimeout(function () {
+      $("#jqueryCard").fadeIn(1000);
+    }, 1000);
+  });
 });
