@@ -400,3 +400,44 @@ console.log("Event 1 Details:");
 Object.entries(event1).forEach(([key, value]) => {
   console.log(`${key}: ${value}`);
 });
+
+let communityEventsArray = [
+  {
+    name: "Music Festival",
+    category: "Music",
+  },
+  {
+    name: "Food Fair",
+    category: "Food",
+  },
+  {
+    name: "Sports Day",
+    category: "Sports",
+  },
+];
+
+communityEventsArray.push({
+  name: "Classical Music Night",
+  category: "Music",
+});
+
+communityEventsArray.push({
+  name: "Baking Workshop",
+  category: "Workshop",
+});
+
+console.log("All Events:");
+console.log(communityEventsArray);
+
+const musicEvents = communityEventsArray.filter(
+  (event) => event.category === "Music",
+);
+
+console.log("Music Events:");
+console.log(musicEvents);
+const displayCards = communityEventsArray.map(
+  (event) => `Workshop on ${event.name}`,
+);
+
+console.log("Formatted Display Cards:");
+displayCards.forEach((card) => console.log(card));
