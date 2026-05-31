@@ -617,11 +617,45 @@ form.addEventListener("submit", function (event) {
   }
 
   if (isValid) {
-    document.getElementById("confirmation").innerHTML =
-      `Registration Successful for ${selectedEvent}`;
+    const userData = {
+      name: name,
+      email: email,
+      event: selectedEvent,
+    };
 
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Event:", selectedEvent);
+    document.getElementById("serverMessage").innerHTML =
+      "Sending registration...";
+    setTimeout(() => {
+      fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(userData),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Server Error");
+          }
+
+          return response.json();
+        })
+
+        .then((data) => {
+          document.getElementById("serverMessage").innerHTML =
+            "Registration submitted successfully!";
+
+          console.log("Server Response:", data);
+        })
+
+        .catch((error) => {
+          document.getElementById("serverMessage").innerHTML =
+            "Registration failed.";
+
+          console.error(error);
+        });
+    }, 2000);
   }
 });
