@@ -417,7 +417,6 @@ nav {
 
 /* Media Query for Screens Smaller than 768px */
 @media screen and (max-width: 768px) {
-
   /* Stack Navigation Links Vertically */
   nav {
     flex-direction: column;
@@ -470,4 +469,12 @@ nav {
   font-weight: bold;
   color: blue;
   margin: 15px;
+}
+#nameError,
+#emailError,
+#eventError {
+  color: red;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 10px;
 }

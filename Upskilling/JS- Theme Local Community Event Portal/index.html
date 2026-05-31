@@ -203,29 +203,38 @@
       <div class="form-container">
         <h2>Event Registration Form</h2>
 
-        <form
-          onsubmit="
-            showMessage();
-            return false;
-          "
-        >
+        <form id="registrationForm">
           <label>Name</label>
           <input
             type="text"
             id="name"
+            name="name"
             placeholder="Enter your name"
             required
             autofocus
           />
+          <span id="nameError"></span>
 
           <label>Email</label>
-          <input type="email" placeholder="Enter your email" required />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+          <span id="emailError"></span>
 
           <label>Event Date</label>
           <input type="date" required />
 
           <label>Event Type</label>
-          <select id="preferredEvent" onchange="savePreference()" required>
+          <select
+            id="preferredEvent"
+            name="event"
+            onchange="savePreference()"
+            required
+          >
             <option value="">Select Event</option>
             <option>Music Festival</option>
             <option>Food Fair</option>
@@ -233,7 +242,7 @@
             <option>Health Camp</option>
             <option>Cultural Night</option>
           </select>
-
+          <span id="eventError"></span>
           <label>Message</label>
           <textarea placeholder="Enter your message" required></textarea>
 
