@@ -236,7 +236,6 @@ function displayEvents() {
   events.forEach((event) => {
     const eventDate = new Date(event.date);
 
-    // if-else condition
     if (eventDate > today && event.seats > 0) {
       const li = document.createElement("li");
       li.innerHTML = `${event.name} - ${event.date} - Seats: ${event.seats}`;
@@ -331,9 +330,7 @@ function displayFilteredEvents(events) {
   console.log("Filtered Events:");
 
   events.forEach((event) => {
-    console.log(
-      `${event.name} | ${event.category} | Seats: ${event.seats}`
-    );
+    console.log(`${event.name} | ${event.category} | Seats: ${event.seats}`);
   });
 }
 function createRegistrationTracker(category) {
@@ -342,15 +339,11 @@ function createRegistrationTracker(category) {
   return function () {
     totalRegistrations++;
 
-    console.log(
-      `${category} Registrations: ${totalRegistrations}`,
-    );
+    console.log(`${category} Registrations: ${totalRegistrations}`);
   };
 }
 
-const entertainmentTracker =
-  createRegistrationTracker("Entertainment");
-
+const entertainmentTracker = createRegistrationTracker("Entertainment");
 
 addEvent("Cultural Night", "Entertainment", 40);
 
@@ -360,10 +353,7 @@ entertainmentTracker();
 entertainmentTracker();
 entertainmentTracker();
 
-filterEventsByCategory(
-  "Entertainment",
-  displayFilteredEvents
-);
+filterEventsByCategory("Entertainment", displayFilteredEvents);
 
 class Event {
   constructor(name, category, seats) {
@@ -381,17 +371,9 @@ Event.prototype.checkAvailability = function () {
   }
 };
 
-const event1 = new Event(
-  "Music Festival",
-  "Entertainment",
-  50,
-);
+const event1 = new Event("Music Festival", "Entertainment", 50);
 
-const event2 = new Event(
-  "Sports Day",
-  "Sports",
-  0,
-);
+const event2 = new Event("Sports Day", "Sports", 0);
 
 console.log(event1.checkAvailability());
 console.log(event2.checkAvailability());
@@ -445,41 +427,48 @@ displayCards.forEach((card) => console.log(card));
 const domEvents = [
   {
     name: "Music Festival",
+    category: "Music",
     seats: 50,
     maxSeats: 50,
   },
   {
     name: "Food Fair",
+    category: "Food",
     seats: 30,
     maxSeats: 30,
   },
   {
     name: "Sports Day",
+    category: "Sports",
     seats: 20,
     maxSeats: 20,
   },
 ];
 const eventContainer = document.querySelector("#eventContainer");
 
-function renderEvents() {
+function renderEvents(eventsToDisplay = domEvents) {
   eventContainer.innerHTML = "";
 
-  domEvents.forEach((event, index) => {
+  eventsToDisplay.forEach((event, index) => {
     const card = document.createElement("div");
 
     card.className = "eventCard";
 
     card.innerHTML = `
       <h3>${event.name}</h3>
+      <p>Category: ${event.category}</p>
       <p>Available Seats: ${event.seats}</p>
-      <center>
-      <button onclick="registerEvent(${index})" class="register-btn button-group">
-        Register
-      </button>
 
-      <button onclick="cancelEvent(${index})" class="register-btn button-group">
-        Cancel
-      </button>
+      <center>
+        <button onclick="registerEvent(${index})"
+                class="register-btn">
+          Register
+        </button>
+
+        <button onclick="cancelEvent(${index})"
+                class="register-btn">
+          Cancel
+        </button>
       </center>
     `;
 
@@ -504,3 +493,29 @@ function cancelEvent(index) {
   }
 }
 renderEvents();
+document
+  .querySelector("#categoryFilter")
+  .addEventListener("change", function () {
+    let category = this.value;
+
+    if (category === "All") {
+      renderEvents(domEvents);
+    } else {
+      let filteredEvents = domEvents.filter(
+        (event) => event.category === category,
+      );
+
+      renderEvents(filteredEvents);
+    }
+  });
+document.querySelector("#searchBox").addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    let searchText = this.value.toLowerCase();
+
+    let searchResults = domEvents.filter((event) =>
+      event.name.toLowerCase().includes(searchText),
+    );
+
+    renderEvents(searchResults);
+  }
+});

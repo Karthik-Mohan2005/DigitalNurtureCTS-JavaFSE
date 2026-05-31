@@ -10,7 +10,6 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
-    
   </head>
   <body>
     <header id="mainHeader">
@@ -175,10 +174,22 @@
 
       <a href="#registration" class="register-btn"> Register Now </a>
     </section>
-    <section id="domEvents">
+    <section id="domEvents contact">
       <h2>Dynamic Events</h2>
 
       <div id="eventContainer"></div>
+    </section>
+    <section id="eventControls">
+      <h2>Search and Filter Events</h2>
+
+      <input type="text" id="searchBox" placeholder="Search Event Name" />
+
+      <select id="categoryFilter">
+        <option value="All">All Categories</option>
+        <option value="Music">Music</option>
+        <option value="Food">Food</option>
+        <option value="Sports">Sports</option>
+      </select>
     </section>
     <!-- Contact Section -->
     <section id="contact">
@@ -331,7 +342,7 @@
     <footer>
       <p>&copy; 2026 Local Community Event Portal</p>
     </footer>
-    
+
     <script src="script.js"></script>
   </body>
 </html>
