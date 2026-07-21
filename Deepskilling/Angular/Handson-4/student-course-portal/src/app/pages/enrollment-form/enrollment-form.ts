@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-enrollment-form',
@@ -17,7 +17,11 @@ export class EnrollmentFormComponent {
 
   onSubmit(form: NgForm) {
 
+    console.log("Form Value:");
+
     console.log(form.value);
+
+    console.log("Form Valid:");
 
     console.log(form.valid);
 
